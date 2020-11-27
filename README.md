@@ -20,7 +20,7 @@ Serie de cuerpo y animacions de informática gráfica para practicar.
 
 Conseguir y animar esta figura , para un $n$ número de patas arbitrario.
 
-[ Pulpico ](./img/octupus.jpg)  
+![ Pulpico ](./img/octupus.jpg)  
 
 Puede encontrar mi solución en `trabajo/src/modelo-jer1.cpp` y `trabajo/include/modelo-jer1.h`  
 
