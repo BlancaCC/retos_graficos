@@ -12,12 +12,11 @@
 #include "seleccion.h"
 
 //includes necesario a partir de la práctica 3
+//#include "modelo-jer.h"
 #include "grafo-escena.h"
 
-
-//AÑADIR FICHEROS DEL LOS RETOS
-
 #include "modelo-jer1.h"
+
 
 
 
@@ -249,7 +248,7 @@ Escena3::Escena3() {
    cout << "Creando objetos de escena 3 .... " << flush ;
 
   
-   objetos.push_back( new Octopus() );
+   objetos.push_back( new Pulpo() );
 
 
 
