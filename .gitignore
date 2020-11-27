@@ -1,5 +1,15 @@
+# own
+
+*~
+*.out
+*exe
+*trabajo/cmake-unix/build/
+
+
+
 # Prerequisites
 *.d
+
 
 # Compiled Object files
 *.slo
