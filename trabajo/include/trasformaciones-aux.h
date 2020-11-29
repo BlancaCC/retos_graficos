@@ -1,4 +1,4 @@
-/**
+ir/**
 File: trasformaciones-aux.h
 Autora: Blanca
 Descripción matrices de transformación que no están definidas por defecto, contiene: 

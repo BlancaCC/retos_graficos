@@ -144,7 +144,7 @@ void MallaInd::visualizarGL( ContextoVis & cv )
 
 
    //________ RETO 2 ______
-   // poner if(cv.envolventes ) crear esa variable de cv y añadir en main
+   
 
    if(cv.envolvente) {
      calculaTodo();

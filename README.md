@@ -122,7 +122,13 @@ y finalmente en el `main.cpp` declarar la acción de botón
 
 
 
-## Reto 3
+## Reto 3  
+
+Dibuja n cubos alineados que se "plieguen" en un polígono regular de n lados
+
+<img src="https://github.com/BlancaCC/retos_graficos/blob/main/img/brazo.jpg" width="500" height="500">
+
+
 # Cosas que me gustaría recordar  
 
 ## Declaración de objetos  

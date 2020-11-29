@@ -105,7 +105,7 @@ class MallaInd : public Objeto3D
 } ;
 // ---------------------------------------------------------------------
 // Clase para mallas obtenidas de un archivo 'ply'
-// es un tipo de malla indexada que define un nuevo constructor
+// es un tipo de malla indexada que defie un nuevo constructor
 // que recibe el nombre del archivo ply como parámetro
 
 class MallaPLY : public MallaInd
