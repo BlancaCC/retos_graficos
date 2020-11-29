@@ -73,7 +73,10 @@ void MallaInd::calcularNormales()
 void MallaInd::visualizarGL( ContextoVis & cv )
 {
 
+  
    using namespace std ;
+
+   
    assert( cv.cauce_act != nullptr );
 
    if ( triangulos.size() == 0 || vertices.size() == 0 )
@@ -139,8 +142,28 @@ void MallaInd::visualizarGL( ContextoVis & cv )
      cout<< "EL MODO ENVÍO DE MALLA-IND NO ESTÁ DEFINIDI" << endl; 
    }
 
-   // restaurar el color previamente fijado
-   glColor4fv( color_previo );
+
+   //________ RETO 2 ______
+   // poner if(cv.envolventes ) crear esa variable de cv y añadir en main
+   calculaTodo();
+   
+   if( array_envolventeXY == nullptr) {
+     array_envolventeXY = new ArrayVertices( GL_FLOAT, 3, esferaXY.size(), esferaXY.data()); 
+  }
+   if( array_envolventeXZ == nullptr) {
+     array_envolventeXZ = new ArrayVertices( GL_FLOAT, 3, esferaXZ.size(), esferaXZ.data()); 
+  }
+
+   if( array_envolventeYZ == nullptr) {
+     array_envolventeYZ = new ArrayVertices( GL_FLOAT, 3, esferaYZ.size(), esferaYZ.data()); 
+  }
+   GLenum tipo_primitiva = GL_LINES;
+   glColor3f(1,1,0);
+   glLineWidth(0.4); 
+   
+   array_envolventeXY -> visualizarGL_MD_VAO(tipo_primitiva);
+   array_envolventeXZ -> visualizarGL_MD_VAO(tipo_primitiva);
+   array_envolventeYZ -> visualizarGL_MD_VAO(tipo_primitiva); 
 }
 
 
@@ -205,6 +228,7 @@ Cubo::Cubo()
          {1,5,7}, {1,7,3}  // Z+ (+1)
       } ;
 
+   calculaTodo(); 
 }
 
 Tetraedro::Tetraedro()
@@ -227,7 +251,8 @@ Tetraedro::Tetraedro()
     };
 
   Tupla3f  mi_color = {0, 220, 0}; 
-  ponerColor(mi_color);  
+  ponerColor(mi_color);
+  calculaTodo(); 
 }
 
 
@@ -264,7 +289,9 @@ CuboColor::CuboColor()
      for (float j = 0; j<2; j++)
        for (float k = 0; k<2; k++)
 	 col_ver.push_back({ i, j, k } );
-	 
+
+
+   calculaTodo(); 
 }
 
 
@@ -307,7 +334,8 @@ PrismaTrapecio::PrismaTrapecio()
       {2,6,4},{4,0,2}
       
     };
- 
+
+  calculaTodo(); 
 }
 
 
@@ -377,3 +405,6 @@ void MallaInd::calculaPuntosRepresentativos() {
   }
   
 }
+
+
+

@@ -52,7 +52,26 @@ class MallaInd : public Objeto3D
   std:: vector<Tupla3f> esferaXY;
 
   Tupla3f centro_geometrico = {0,0,0};
-  float radio_envolvente = 0; 
+  float radio_envolvente = 0;
+
+  //____  parte 2
+
+  ArrayVertices * array_envolventeXY = nullptr;
+  ArrayVertices * array_envolventeXZ = nullptr;
+  ArrayVertices * array_envolventeYZ = nullptr;
+   
+
+  
+  
+   public:
+      // crea una malla vacía (nombre: "malla indexada nueva vacía")
+   
+
+  
+  
+   public:
+      // crea una malla vacía (nombre: "malla indexada nueva vacía")
+   
 
   
   
@@ -70,7 +89,14 @@ class MallaInd : public Objeto3D
 
   Tupla3f centroGeometrico();
   float calculaDistanciaMaxima();
-  void calculaPuntosRepresentativos(); 
+  void calculaPuntosRepresentativos();
+
+
+  void calculaTodo() {
+    centroGeometrico();
+    calculaDistanciaMaxima();
+    calculaPuntosRepresentativos();
+  }
 
 
 
