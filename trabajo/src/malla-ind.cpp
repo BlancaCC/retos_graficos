@@ -145,25 +145,29 @@ void MallaInd::visualizarGL( ContextoVis & cv )
 
    //________ RETO 2 ______
    // poner if(cv.envolventes ) crear esa variable de cv y añadir en main
-   calculaTodo();
-   
-   if( array_envolventeXY == nullptr) {
-     array_envolventeXY = new ArrayVertices( GL_FLOAT, 3, esferaXY.size(), esferaXY.data()); 
-  }
-   if( array_envolventeXZ == nullptr) {
-     array_envolventeXZ = new ArrayVertices( GL_FLOAT, 3, esferaXZ.size(), esferaXZ.data()); 
-  }
 
-   if( array_envolventeYZ == nullptr) {
-     array_envolventeYZ = new ArrayVertices( GL_FLOAT, 3, esferaYZ.size(), esferaYZ.data()); 
+   if(cv.envolvente) {
+     calculaTodo();
+     
+     if( array_envolventeXY == nullptr) {
+       array_envolventeXY = new ArrayVertices( GL_FLOAT, 3, esferaXY.size(), esferaXY.data()); 
   }
-   GLenum tipo_primitiva = GL_LINES;
-   glColor3f(1,1,0);
-   glLineWidth(0.4); 
-   
-   array_envolventeXY -> visualizarGL_MD_VAO(tipo_primitiva);
-   array_envolventeXZ -> visualizarGL_MD_VAO(tipo_primitiva);
-   array_envolventeYZ -> visualizarGL_MD_VAO(tipo_primitiva); 
+     if( array_envolventeXZ == nullptr) {
+       array_envolventeXZ = new ArrayVertices( GL_FLOAT, 3, esferaXZ.size(), esferaXZ.data()); 
+     }
+
+     if( array_envolventeYZ == nullptr) {
+       array_envolventeYZ = new ArrayVertices( GL_FLOAT, 3, esferaYZ.size(), esferaYZ.data()); 
+     }
+     GLenum tipo_primitiva = GL_LINES;
+     glColor3f(1,1,0);
+     glLineWidth(0.4); 
+     
+     array_envolventeXY -> visualizarGL_MD_VAO(tipo_primitiva);
+     array_envolventeXZ -> visualizarGL_MD_VAO(tipo_primitiva);
+     array_envolventeYZ -> visualizarGL_MD_VAO(tipo_primitiva);
+
+   }
 }
 
 

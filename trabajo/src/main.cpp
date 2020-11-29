@@ -279,6 +279,12 @@ void FGE_PulsarLevantarTecla( GLFWwindow* window, int key, int scancode, int act
          break ;
 
 
+	 //_____ RETO 2 _______
+
+	 case GLFW_KEY_U :
+         cv.envolvente = ! cv.envolvente ;
+         cout << "envolvente : " << (cv.envolvente ? "activado" : "desactivado") << endl << flush ;
+         break ;
 
 
 
