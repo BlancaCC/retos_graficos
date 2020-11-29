@@ -21,9 +21,10 @@ class Brazo: public NodoGrafoEscena
   // matrices que le dan movimiento a mi objeto
 
   // movimientos turbinas
-  const int NUMERO_CUBOS = 2; 
   
-  Matriz4f * m_cubo[2]; // = nullptr; // matriz de giro
+  const int N = 5;  // numero de cubos (tinee que coincidir con el de abajo
+  
+  Matriz4f * m_cubo[5];// = nullptr; // matriz de giro
 
 
   void actualizarEstadoParametro( const unsigned iParam, const float t_sec);
@@ -56,7 +57,7 @@ class Brazo: public NodoGrafoEscena
 class Cubillo: public NodoGrafoEscena
 {
 public:
-  Cubillo( Matriz4f * & giro, float color, Objeto3D * & cubo); 
+  Cubillo(float color); 
 }; 
 #endif
 

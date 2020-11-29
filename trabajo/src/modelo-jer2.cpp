@@ -37,10 +37,10 @@ void Brazo :: actualizarEstadoParametro ( const unsigned iParam, const float t_s
 
 void Brazo::fijarGiro( const float t) {
 
-  float angulo = 360.0 / NUMERO_CUBOS;
+  float angulo = 180.0/ N; 
 
-  for( int i = 0; i<NUMERO_CUBOS; i++) 
-    *m_cubo[i] = MAT_Rotacion( angulo*sin(t), 0,0,1.0); 
+  for(int i = 1; i<N; i++)
+    * m_cubo[i] = MAT_Rotacion( angulo + angulo*cos(2*M_PI*t/4), 0,0,1.0); 
 }
 // _______ clase raíz ________
 
@@ -49,62 +49,34 @@ Brazo:: Brazo()
   ponerNombre("Brazo de cubos ");
 
   
-  
-
-  float tam_lado = 2.0;
-  
+  float angulo =  360.0 / N; 
   Objeto3D * cubo = new Cubo();
+  float  color;
+  
+   agregar(MAT_Traslacion(1,-1, 0));
 
-  //agregar(MAT_Rotacion(30, 0,0, 1));
+  agregar(cubo);
+  for(int i = 1; i<N; i++) {
+    color = 1.0*i/N; 
+    agregar( MAT_Traslacion(1,1, 0));
+    unsigned ind = agregar(MAT_Rotacion(angulo, 0,0,1));
+    agregar( MAT_Traslacion(1,-1, 0));
   
-  agregar(MAT_Traslacion( -1, -1, 0));
-  
-  agregar( cubo);
-  agregar(MAT_Traslacion( 1, 1, 0));
-  
-  
-  unsigned  indice  = agregar(MAT_Rotacion(30, 0,0, 1));
-   m_cubo[0] = leerPtrMatriz(indice);
-   
-  agregar(MAT_Traslacion( 2, 0, 0)); 
-  float color = 0; 
-  agregar( new Cubillo(m_cubo[0],  color, cubo));
-  
- 
-  
-  for (int i= 1; i<NUMERO_CUBOS; i++) {
-    
-    m_cubo[i] = leerPtrMatriz(agregar(*m_cubo[0]));
-    
-    
-    //agregar(MAT_Rotacion(30, 0,0, 1)); 
-    agregar(MAT_Traslacion( tam_lado, 0, 0));
 
-    
-    float color = i*1.0/NUMERO_CUBOS; 
-    agregar( new Cubillo(m_cubo[i],  color, cubo));
-    
+    m_cubo[i] = leerPtrMatriz(ind); 
+    agregar(new Cubillo(color));
 
-   
+  
   }
 
-  
+   
     
 }
 
-Cubillo::Cubillo( Matriz4f * &giro, float color, Objeto3D * & cubo) {
-  /**
-  agregar(MAT_Traslacion( -1, -1, 0));
+Cubillo::Cubillo( float color) {
   
-  agregar( cubo);
-  agregar(MAT_Traslacion( 1, 1, 0));
   
-  agregar(MAT_Rotacion(30, 0,0, 1));
-  */
-  agregar(MAT_Rotacion(30, 0,0, 1));
-  //agregar(*giro); 
-  agregar(MAT_Traslacion( 1, -1, 0));
-  agregar( cubo);
-  ponerColor({ color, color , color}); 
+  agregar(new Cubo()); 
+  ponerColor({color, color, color});
   
 }
