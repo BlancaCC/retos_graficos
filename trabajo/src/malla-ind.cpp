@@ -314,3 +314,66 @@ PrismaTrapecio::PrismaTrapecio()
 
 // -----------------------------------------------------------------------------------------------
 
+
+Tupla3f MallaInd::centroGeometrico() {
+
+  // calcular el número de vertices
+
+  int n =  vertices.size();
+
+  Tupla3f  media= {0,0,0}; 
+  // hacer operaciones con tupla3f
+
+  for( int i=0; i<n; i++)
+    media = media + vertices[i]; 
+
+
+  centro_geometrico = media;
+  
+  return media; 
+}
+
+
+
+float MallaInd::calculaDistanciaMaxima() {
+
+  float distancia = 0;
+  float candidato = 0;
+
+  int n =  vertices.size();
+  
+  for( int i = 0; i<n; i++) {
+
+    if( (candidato= (centro_geometrico - vertices[i]).lengthSq()) > distancia ) {
+      distancia = candidato; 
+    }
+  }
+
+    distancia = sqrt(distancia);
+    radio_envolvente = distancia;
+    
+    return distancia;
+    
+}
+
+
+void MallaInd::calculaPuntosRepresentativos() {
+
+  const int n = 20; // número de pundos que consideramos representativos
+
+  float x,y, w;  // coordenadas y argumento
+  
+  for(int i = 0; i< n; i++) {
+
+    w = 2*M_PI /n *i; 
+    x = radio_envolvente* cos( w);
+    y = radio_envolvente* sin(w);
+
+    esferaXY.push_back( centro_geometrico + Tupla3f({x,y, 0}) );
+    esferaXZ.push_back( centro_geometrico + Tupla3f({x,0, y}) );
+    esferaYZ.push_back( centro_geometrico + Tupla3f({0,y, x}) ); 
+    
+    
+  }
+  
+}

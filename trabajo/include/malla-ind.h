@@ -46,8 +46,16 @@ class MallaInd : public Objeto3D
       // calculo de las normales de triángulos (solo si no están creadas ya)
       void calcularNormalesTriangulos() ;
 
+  //_______ RETO 2 _________
+  std:: vector<Tupla3f> esferaXZ;
+  std:: vector<Tupla3f> esferaYZ;
+  std:: vector<Tupla3f> esferaXY;
 
+  Tupla3f centro_geometrico = {0,0,0};
+  float radio_envolvente = 0; 
 
+  
+  
    public:
       // crea una malla vacía (nombre: "malla indexada nueva vacía")
       MallaInd() ;
@@ -58,6 +66,11 @@ class MallaInd : public Objeto3D
       // visualizar el objeto con OpenGL
       virtual void visualizarGL( ContextoVis & cv ) ;
 
+  // _____ RETO 2 _________
+
+  Tupla3f centroGeometrico();
+  float calculaDistanciaMaxima();
+  void calculaPuntosRepresentativos(); 
 
 
 

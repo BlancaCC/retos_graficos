@@ -16,7 +16,7 @@
 #include "grafo-escena.h"
 
 #include "modelo-jer1.h"
-
+#include "modelo-jer2.h"
 
 
 
@@ -255,6 +255,19 @@ Escena3::Escena3() {
    cout << "hecho." << endl << flush ;
 }
 
+
+Escena4::Escena4() {
+
+  using namespace std ;
+   cout << "Creando objetos de escena 4 .... " << flush ;
+
+  
+   objetos.push_back( new Brazo() );
+
+
+
+   cout << "hecho." << endl << flush ;
+}
 
 
 // ----------------------------------------------------------------------
