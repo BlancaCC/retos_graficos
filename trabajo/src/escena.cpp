@@ -286,3 +286,15 @@ Escena4::Escena4() {
 
 
 
+Escena5::Escena5() {
+
+  using namespace std ;
+   cout << "Creando objetos de escena 5 .... " << flush ;
+
+  
+   objetos.push_back( new ExtrellaZ(8) );
+
+
+
+   cout << "hecho." << endl << flush ;
+}

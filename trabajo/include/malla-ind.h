@@ -154,4 +154,14 @@ public:
   PrismaTrapecio();
 };
 
+
+
+
+//_______  RETO 4 _______-
+
+class  ExtrellaZ: public MallaInd
+{
+public:
+  ExtrellaZ( unsigned n); 
+}; 
 #endif

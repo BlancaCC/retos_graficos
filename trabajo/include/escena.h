@@ -122,6 +122,13 @@ public:
 };
 
 
+
+class Escena5 : public Escena
+{
+public:
+  Escena5();
+};
+
 // -------------
 
 
