@@ -247,3 +247,73 @@ bool NodoGrafoEscena::buscarObjeto
    // ni este nodo ni ningún hijo es el buscado: terminar
    return false ;
 }
+
+
+#include "malla-ind.h"
+#include "malla-revol.h"
+GrafoEstrellaX::GrafoEstrellaX(unsigned n) {
+
+
+  Objeto3D * conoEscalado = new miCono();
+  
+  float e = 1.5;
+  float t = -0.5;
+  agregar(MAT_Rotacion(90,0,1,0));
+  unsigned ind = agregar(MAT_Ident()); //aquí estará la rotación
+  
+  for( int i=0; i<n; i++)
+    {
+      agregar(MAT_Rotacion(360.0/n*i,0,0,1)); 
+      agregar(conoEscalado);
+      
+    }
+  agregar(MAT_Escalado(e,e,e) * MAT_Traslacion(t,t,0));
+
+  
+  agregar(new ExtrellaZ(n) );
+
+  
+  giro = leerPtrMatriz(ind); 
+  
+
+  
+  
+}
+
+
+
+miCono::miCono() {
+
+  agregar(MAT_Traslacion(1,0,0) * MAT_Rotacion(90, 0,0,1)* MAT_Escalado(0.14, 0.15,0.14));
+  agregar(new Cono(15,15));
+
+  
+}
+
+
+unsigned GrafoEstrellaX:: leerNumParametros() const
+{
+  // número de grado de libertad 
+  return 1; 
+}
+
+void GrafoEstrellaX::fijarGiro( const float t)
+{
+
+  * giro = MAT_Rotacion( t*360*2.5, 0.0, 0.0, 1.0); 
+}
+
+
+void GrafoEstrellaX :: actualizarEstadoParametro ( const unsigned iParam, const float t_sec )
+{
+  assert ( iParam < leerNumParametros());
+
+  switch(iParam)
+    {
+    case 0 :
+     fijarGiro( t_sec);
+      break;
+
+      
+    }
+}

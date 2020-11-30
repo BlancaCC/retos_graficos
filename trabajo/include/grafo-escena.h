@@ -100,6 +100,36 @@ class NodoGrafoEscena : public Objeto3D
 
 } ;
 
+
+
+/// ________ RETO 4 _____
+class GrafoEstrellaX : public NodoGrafoEscena
+{
+
+protected:
+  Matriz4f * giro = nullptr;
+  void actualizarEstadoParametro( const unsigned iParam, const float t_sec);
+
+public :
+  GrafoEstrellaX ( unsigned n);
+
+  
+  unsigned leerNumParametros() const; 
+  void fijarGiro(const float t);
+};
+
+
+
+
+  
+
+class miCono: public NodoGrafoEscena {
+
+public :
+  miCono(); 
+};
+
+
 #endif // GRAFO_ESCENA_HPP
 
 // *********************************************************************

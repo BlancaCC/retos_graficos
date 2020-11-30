@@ -416,7 +416,7 @@ void MallaInd::calculaPuntosRepresentativos() {
   
 }
 
-
+//______ RETO 4_______
 
  ExtrellaZ::ExtrellaZ(unsigned n) {
 
@@ -462,6 +462,64 @@ void MallaInd::calculaPuntosRepresentativos() {
     triangulos.push_back({0,i , i+1});
     
   }
-  
+   // el último vertice y el segundo están duplicados, se evita añadiendo manualmente el último triangulo 
       
 }
+
+
+PiramideExtrellaZ::PiramideExtrellaZ( unsigned n) {
+  
+  assert(n> 1); 
+  float xo = 0.5;
+  float yo = 0.5; 
+  vertices = {
+    {xo, yo, 0.0},{xo,yo,yo}
+  };
+  col_ver={{ 1, 1, 1 }, { 1, 1, 1 }  };
+
+
+  float angulo = M_PI/n;
+  float r_grande = 1;
+  float r_pequeno = 0.5;
+
+  float angulo_actual = 0; 
+
+  float x,y; 
+  for(unsigned i=0; i<n+1; i++) {
+
+    x = r_grande* cos(angulo_actual) +xo;
+    y = r_grande* sin(angulo_actual) + yo; 
+    
+    vertices.push_back({x,y,0.0});
+    col_ver.push_back({ x, y, 0 } );
+
+
+    angulo_actual += angulo;
+    
+   
+    x = r_pequeno* cos(angulo_actual) +xo;
+    y = r_pequeno* sin(angulo_actual) + yo; 
+    
+    vertices.push_back({x,y,0.0});
+    col_ver.push_back({ x, y, 0 } );
+    
+    angulo_actual += angulo;
+    
+    
+  }
+
+  
+  for( unsigned i=2; i<=2*n+1; i++) {
+    triangulos.push_back({1,i , i+1});
+    
+  }
+  for( unsigned i=2; i<2*n+2; i++) {
+    triangulos.push_back({0,i , i+1});
+    
+  }
+
+  // el último vertice y el segundo están duplicados, se evita añadiendo manualmente el último triangulo 
+      
+}
+
+

@@ -291,7 +291,9 @@ Escena5::Escena5() {
   using namespace std ;
    cout << "Creando objetos de escena 5 .... " << flush ;
 
-  
+
+   objetos.push_back( new GrafoEstrellaX(8)); 
+   objetos.push_back(new PiramideExtrellaZ(8)); 
    objetos.push_back( new ExtrellaZ(8) );
 
 
