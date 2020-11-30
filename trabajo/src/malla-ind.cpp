@@ -168,6 +168,11 @@ void MallaInd::visualizarGL( ContextoVis & cv )
      array_envolventeYZ -> visualizarGL_MD_VAO(tipo_primitiva);
 
    }
+
+
+   
+   // restaurar el color previamente fijado
+   glColor4fv( color_previo );
 }
 
 

@@ -117,7 +117,7 @@ class ContextoVis
 
   // _______PARA EL RETO 2_____-
 
-  bool envolvente = true; 
+  bool envolvente = false; 
 };
 
 #endif // PRACTICAS_H

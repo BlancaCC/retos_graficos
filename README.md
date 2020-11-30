@@ -129,6 +129,60 @@ Dibuja n cubos alineados que se "plieguen" en un polígono regular de n lados
 <img src="https://github.com/BlancaCC/retos_graficos/blob/main/img/brazo.jpg" width="500" height="500">
 
 
+
+## Reto 4    
+
+Este está basado en el examen de prácticas del grupo 2 de 20-21  
+
+Enunciados examen de las prácticas 1 y 2
+Sube a la tarea un único archivo P12.zip con las carpetas include y src (con esa estructura), con las mismas prácticas ya subidas, y con los añadidos que se describen aquí:
+
+Extiende los archivos malla-ind.h y malla-ind.cpp de tus prácticas para incluir (al final) las declaraciones e implementaciones de las nuevas clases que se indican más abajo.
+
+### Práctica 1: clase ExtrellaZ:
+
+Clase derivada de MallaInd, cuyo constructor acepta un parámetro n (unsigned, > 1). El constructor inicializa las tablas de vértices, triángulos y colores de una malla indexada con 2*n triángulos y 2*n+1 vértices, en forma de estrella, plana (en el plano perpendicular al eje Z) y con n puntas. Los vértices tienen coordenadas entre 0 y 1 en X y en Y (y todos tienen Z igual a cero). El centro de la estrella está en (0.5,0.5) en X e Y, y los radios hasta las puntas son de longitud 0.5.
+
+El vértice central tiene color blanco. El resto de vértices tienen colores cuyas componentes R, G y B coinciden con sus coordenadas X, Y y Z, respectivamente.
+  
+  
+  <img src="https://github.com/BlancaCC/retos_graficos/blob/main/img/r4_1.jpg" width="500" height="500">
+
+### Práctica 2: clase PiramideExtrellaZ:
+
+Es una clase derivada de MallaInd, cuyo constructor acepta un parámetro n (unsigned, > 1). El constructor inicializa las tablas de vértices, triángulos y colores de una malla indexada con 4*n triángulos y 2*n+2 vértices, en forma de pirámide, con eje el eje Z, y cuya base es idéntica a la estrella descrita en la pregunta anterior (usa una copia de ese código para crear la base). El ápice de la pirámide es el único vértice adicional, tiene coordenadas (0.5,0.5,0.5) y color blanco.
+
+En la figura se observan ambos objetos.
+
+Añade (como primer objeto de la escena) una instacia de EstrellaZ en el constructor de Escena1, e igualmente una instancia de PiramideEstrellaZ en el constructor de Escena2 (tmb. como primer objeto).
+Recuerda que cada archivo debe tener tu apellidos, nombre y DNI en la primera línea.  
+
+<img src="https://github.com/BlancaCC/retos_graficos/blob/main/img/r4_2.jpg" width="500" height="500">
+
+
+### Enunciado examen de la práctica 3  
+
+Sube a la tarea un único archivo con las carpetas include y src (con esa estructura), con las mismas prácticas ya subidas, las clases del examen de las prácticas 1 y 2 y con los añadidos que se describen aquí:
+
+Extiende los archivos grafo-escena.h y grafo-escena.cpp de tus prácticas para incluir (al final) las declaraciones e implementaciones de la clase GrafoEstrellaX, con estas especificaciones:
+
+El constructor de la clase acepta un parámetro llamado n (unsigned, >1)
+
+En el constructor se construye un grafo de escena que tiene una instancia del objeto con una estrella plana de la práctica 1 (usa en tu grafo de escena una instancia de la misma clase que has creado para la práctica 1 en este examen, instanciala con el número de puntas indicado por n). Esa estrella es perpendicular al eje X. Tiene centro en el origen y el radio desde el centro a los vértices en las puntas es 1.3.
+
+En cada punta de la estrella hay una instancia de la clase Cono de la práctica 2, con radio de la base 0.14, y altura 0.15, y cuyo eje es el segmento que hace de radio desde el centro de la estrella a esa punta (intenta usar una única instancia del cono para todas las puntas, instanciada con distintas transformaciones)
+
+El objeto tiene un parámetro o grado de libertad, de forma que se puede rotar entorno al eje X (entorno al centro de la estrella). Si se activan las animaciones, gira a una velocidad de 2.5 vueltas por segundo.
+
+En la figura de abajo se observa el objeto jerárquico (los colores de tu estrella no tienen porque coincidir con los de la figura).
+
+Añade (como primer objeto de la escena) una instacia de esta clase en el constructor de Escena3.
+
+Recuerda que cada archivo debe tener tu apellidos, nombre y DNI en la primera línea.
+
+<img src="https://github.com/BlancaCC/retos_graficos/blob/main/img/r4_3.jpg" width="500" height="500">
+
+
 # Cosas que me gustaría recordar  
 
 ## Declaración de objetos  
