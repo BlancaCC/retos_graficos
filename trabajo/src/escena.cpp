@@ -300,3 +300,17 @@ Escena5::Escena5() {
 
    cout << "hecho." << endl << flush ;
 }
+
+
+Escena6::Escena6() {
+
+  using namespace std ;
+   cout << "Creando objetos de escena 5 .... " << flush ;
+
+
+   objetos.push_back( new Toro(20,20)); 
+   
+
+
+   cout << "hecho." << endl << flush ;
+}

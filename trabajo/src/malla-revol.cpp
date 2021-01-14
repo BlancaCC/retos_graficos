@@ -237,3 +237,42 @@ ponerNombre( "Esfera generada por revolución");
 
   
 }
+
+
+// ___reto 5 ___
+
+Toro::Toro( const int num_verts_per, const unsigned nperfiles) {
+
+ponerNombre("Toro");
+
+// vectores que vamos a inicializar 
+
+vector<Tupla3f> perfil; 
+const float angulo_giro = 180 / (num_verts_per - 1);
+Matriz4f matriz_rotacion =  MAT_Rotacion( angulo_giro, 0.0, 0.0, 1.0 ); 
+// creamos el el círculo que rotaremso 
+
+ const float radio = 0.5; 
+ 
+
+  Tupla3f p = { 1.5, -0.5,0 };  // recordemos que tiene que emperar por lo bajo
+ 
+ 
+ for(int i = 0; i< num_verts_per; i++)
+  {
+   
+
+   p = matriz_rotacion * p; 
+
+   perfil.push_back({p});
+
+
+ }
+
+inicializar (perfil, nperfiles);
+
+
+
+
+  
+}

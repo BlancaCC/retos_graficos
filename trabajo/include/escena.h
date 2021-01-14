@@ -1,3 +1,4 @@
+
 // *********************************************************************
 // **
 // ** Informática Gráfica - curso 2020-21
@@ -129,6 +130,12 @@ public:
   Escena5();
 };
 
+
+class Escena6 : public Escena
+{
+  public:
+  Escena6();
+};
 // -------------
 
 

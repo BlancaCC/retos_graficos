@@ -183,9 +183,23 @@ Recuerda que cada archivo debe tener tu apellidos, nombre y DNI en la primera l�
 <img src="https://github.com/BlancaCC/retos_graficos/blob/main/img/r4_3.jpg" width="500" height="500">
 
 
+### Reto 5   
+
+Os dejo sin resolver por aquí el examen que me tocó a mí :D 
+
+<img src="https://github.com/BlancaCC/retos_graficos/blob/main/img/e1.png" width="500" height="500">
+<img src="https://github.com/BlancaCC/retos_graficos/blob/main/img/e2.png" width="500" height="500">
+
+
 # Cosas que me gustaría recordar  
 
 ## Declaración de objetos  
 
 Cariño, que no se te olvide crear un nueva clase escena en los ficheros de escena.cpp y escena.h (si es un include añadiendo el respectivo modelo jerarquico);  y después hacer un `push` de esos objetos en
 el main. <3
+
+
+## Para la práctica uno  
+
+- Acuerdate de que el sin va en radianes  
+- Dublica el primer vértice y cógelo con el for
