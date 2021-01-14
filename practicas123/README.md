@@ -146,7 +146,7 @@ Clase derivada de MallaInd, cuyo constructor acepta un parámetro n (unsigned, >
 El vértice central tiene color blanco. El resto de vértices tienen colores cuyas componentes R, G y B coinciden con sus coordenadas X, Y y Z, respectivamente.
   
   
-  <img src="https://github.com/BlancaCC/retos_graficos/blob/main/img/r4_1.jpg" width="500" height="500">
+  <img src="https://github.com/BlancaCC/retos_graficos/blob/main/practicas123/img/r4_1.jpg" width="500" height="500">
 
 ### Práctica 2: clase PiramideExtrellaZ:
 
@@ -157,7 +157,7 @@ En la figura se observan ambos objetos.
 Añade (como primer objeto de la escena) una instacia de EstrellaZ en el constructor de Escena1, e igualmente una instancia de PiramideEstrellaZ en el constructor de Escena2 (tmb. como primer objeto).
 Recuerda que cada archivo debe tener tu apellidos, nombre y DNI en la primera línea.  
 
-<img src="https://github.com/BlancaCC/retos_graficos/blob/main/img/r4_2.jpg" width="500" height="500">
+<img src="https://github.com/BlancaCC/retos_graficos/blob/main/practicas123/img/r4_2.jpg" width="500" height="500">
 
 
 ### Enunciado examen de la práctica 3  
@@ -180,15 +180,15 @@ Añade (como primer objeto de la escena) una instacia de esta clase en el constr
 
 Recuerda que cada archivo debe tener tu apellidos, nombre y DNI en la primera línea.
 
-<img src="https://github.com/BlancaCC/retos_graficos/blob/main/img/r4_3.jpg" width="500" height="500">
+<img src="https://github.com/BlancaCC/retos_graficos/blob/main/practicas123/img/r4_3.jpg" width="500" height="500">
 
 
 ### Reto 5   
 
 Os dejo sin resolver por aquí el examen que me tocó a mí :D 
 
-<img src="https://github.com/BlancaCC/retos_graficos/blob/main/img/e1.png" width="500" height="500">
-<img src="https://github.com/BlancaCC/retos_graficos/blob/main/img/e2.png" width="500" height="500">
+<img src="https://github.com/BlancaCC/retos_graficos/blob/main/practicas123/img/e1.png" width="500" height="500">
+<img src="https://github.com/BlancaCC/retos_graficos/blob/main/practicas123/img/e2.png" width="500" height="500">
 
 
 # Cosas que me gustaría recordar  
