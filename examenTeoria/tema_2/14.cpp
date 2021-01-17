@@ -62,27 +62,57 @@ void  creaAristaNoCoherente()
 }
 
 
-  void  creaAristaNoCoherente() 
-{ // método algo más eficiente 
+
+
+
+
+
+void  creaAristaNoCoherente() 
+{ // método algo más eficiente - con estructura auxiliar 
 
   int i,j,k; // índices que habrá en nuestro vector
   std::vector<Tupla2i>::iterator it; // iterador para saber si está definido
-  Tupla2i aux; 
+  Tupla2i aux;
+
+
+  vector<Vector<int>> ver_ady(); 
+  
   for( unsigned int y= 0; y<triangulos.size(); y++)
     {
 
-      // leemos índices a los que hace referencia el triángulo 
-      i = triangulos[y](0);
-      j = triangulos[y](1);
-      k = triangulos[y](2);
-
+ 
       for(int z = 0; z<3; z++)
-        {
-          aux = { triangulos[y]( z), triangulos[y]((z+1)%3) };
+        { 
 
-          
-          if ( ari.end() ==  find(ari.begin(), ari.end(), aux ) )
-            ari.push_back( aux); 
+          i = triangulos[y]( z);
+          j = triangulos[y]((z+1)%3);
+
+          if (j<i) { //nos quedamos con el mínimo en i
+            k = i;
+            i = j;
+            j = k; 
+
+          }    
+          if ( ver_ady[i].end() ==  find(ver_ady[i].begin(), ver_ady[i].end(), j ) )
+            ver_ady[i].push_back(j); 
       
+        }
+
+      //guardamos los valores en ari
+      for( int i = 0 ; i< ver_ady.size(); i++)
+        {
+          for( int j = 0 ; i< ver_ady[i].size(); i++)
+            {
+
+              ari.push_back({i,ver_ady[j]});
+          
+            }
+      
+        }
     }
 }
+
+
+
+
+  
