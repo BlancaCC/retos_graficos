@@ -1,12 +1,23 @@
 # Carpeta con el fin de prepararse el examen final de teoría   
 
 
+## Dudas  
+
+1. tema 1: modo diferido 
+2. tema 2: 
+   - 19: si está bien hecho con  la estructura mallaInd de la práctica 
+   - 27: ¿cómo centrar y escalar en ventana de tamaño concreto? ¿view port?
+          ¿componer modelview con traslación? 
+
 ## Indice de contenido relevante   
+
 
 
 ### Tema 2  
 
+Diapositvas  model view 85 tema 2. 
 - Sintaxis y operaciones válidas de vectories: Tema 1 t228
+- Rotación matrices t2 en la 78. 
 
 ```c++
 
