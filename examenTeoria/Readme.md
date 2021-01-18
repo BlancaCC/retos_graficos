@@ -8,6 +8,8 @@
    - 19: si está bien hecho con  la estructura mallaInd de la práctica 
    - 27: ¿cómo centrar y escalar en ventana de tamaño concreto? ¿view port?
           ¿componer modelview con traslación? 
+          
+
 
 ## Indice de contenido relevante   
 
@@ -39,3 +41,9 @@ float s,l ;
 
 `Tupla3f  p = vertices[triangulos[i](0)];
 `
+
+
+
+# Tema 3  
+
+pag 22  view fructum

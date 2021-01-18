@@ -1,3 +1,4 @@
+
 /**
 Supón que dispones de una función llamada figura_simple que dibuja con
  OpenGL la figura que aparece a la izquierda (un cuadrado de lado unidad 
@@ -15,14 +16,20 @@ de la derecha. Para lograrlo puedes usar manipulación de la pila de la matriz
 
 
 void figura_compleja() {
+
+  
+  
   float ecc = sqrt(1.0/2); //escala cuadrado centro
+  
   // figura centro
   glScalef(ecc, ecc, 1);
   mi_rotate_z(-45);
   glScalef(1, -1, 1);
+  glTranslatef(-1.0/2,-1.0/2,0 );
   figura_simple();
 
   glPopMatrix(); 
+  glPopMatrix();
   glPopMatrix();
   glPopMatrix(); 
   
@@ -32,7 +39,9 @@ void figura_compleja() {
   glScalef(1, 1/2, 1);
   glTranslatef(1,-1/4,0 );
   glScalef(1, -1, 1);
+  glTranslatef(-1.0/2,-1.0/2,0 );
   figura_simple();
+  glPopMatrix(); 
   glPopMatrix(); 
   glPopMatrix();
   glPopMatrix();
@@ -40,8 +49,10 @@ void figura_compleja() {
   //figura izquierda
   glScalef(1/2, 1/2, 1);
   glTranslatef(-1,-1/4,0 );
+  glTranslatef(-1.0/2,-1.0/2,0 );
   
   figura_simple();
+  glPopMatrix(); 
   glPopMatrix(); 
   glPopMatrix();
   
