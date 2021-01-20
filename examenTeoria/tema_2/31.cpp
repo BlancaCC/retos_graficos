@@ -20,7 +20,8 @@ void figura_compleja() {
   
   
   float ecc = sqrt(1.0/2); //escala cuadrado centro
-  
+
+  glPushMatrix();
   // figura centro
   glScalef(ecc, ecc, 1);
   mi_rotate_z(-45);
@@ -29,9 +30,7 @@ void figura_compleja() {
   figura_simple();
 
   glPopMatrix(); 
-  glPopMatrix();
-  glPopMatrix();
-  glPopMatrix(); 
+ glPushMatrix();
   
 
 //figura derecha
@@ -41,20 +40,18 @@ void figura_compleja() {
   glScalef(1, -1, 1);
   glTranslatef(-1.0/2,-1.0/2,0 );
   figura_simple();
-  glPopMatrix(); 
-  glPopMatrix(); 
-  glPopMatrix();
+ 
   glPopMatrix();
 
   //figura izquierda
+  glPushMatrix(); 
   glScalef(1/2, 1/2, 1);
   glTranslatef(-1,-1/4,0 );
   glTranslatef(-1.0/2,-1.0/2,0 );
   
   figura_simple();
   glPopMatrix(); 
-  glPopMatrix(); 
-  glPopMatrix();
+
   
 }
 
