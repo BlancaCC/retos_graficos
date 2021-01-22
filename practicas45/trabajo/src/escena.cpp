@@ -257,8 +257,8 @@ Escena1::Escena1()
    using namespace std ;
    cout << "Creando objetos de escena 1 .... " << flush ;
 
-
-   objetos.push_back(  new CilindroTextura() );
+objetos.push_back(  new CirculoLatas(3) );
+   objetos.push_back(  new CilindroTextura(1) );
    // añadir el objeto 'Cubo' a la lista de objetos de esta escena:
    objetos.push_back( new Cubo() );
 

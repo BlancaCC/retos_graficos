@@ -190,6 +190,7 @@ CMakeFiles/pracs_ig_exe.dir/home/blanca/repositorios/retos_graficos/practicas45/
  ../../../trabajo/include/materiales-luces.h
  ../../../trabajo/include/objeto3d.h
  ../../../trabajo/include/practicas.h
+ ../../../trabajo/include/seleccion.h
  /home/blanca/repositorios/retos_graficos/practicas45/trabajo/src/malla-ind.cpp
 CMakeFiles/pracs_ig_exe.dir/home/blanca/repositorios/retos_graficos/practicas45/trabajo/src/malla-revol.cpp.o
  ../../../recursos/include/cauce.h

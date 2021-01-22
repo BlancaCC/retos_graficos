@@ -13,6 +13,7 @@
 #include "malla-ind.h"   // declaración de 'ContextoVis'
 #include "lector-ply.h"
 
+#include "seleccion.h"
 
 // *****************************************************************************
 // funciones auxiliares
@@ -471,7 +472,7 @@ CilindroT::CilindroT()
 :  MallaInd( "CilindroT" )
 {
 
-  int n=30;
+  int n=50;
   float x,y,z; 
   float r=1.0;
   z=2.0;
@@ -505,6 +506,7 @@ CilindroT::CilindroT()
   }
 
     calcularNormales();
+    ponerIdentificador(-1);
 }
 
 TapaCilindro::TapaCilindro()
@@ -531,6 +533,7 @@ TapaCilindro::TapaCilindro()
 
     cc_tt_ver.push_back({x_t, y_t});
     
+    
   }
 
   // trianglos
@@ -542,20 +545,62 @@ TapaCilindro::TapaCilindro()
   }
 
     calcularNormales();
- 
+  ponerIdentificador(-1);
  
 }
 
 
-CilindroTextura::CilindroTextura(){
+CilindroTextura::CilindroTextura( int identificador){
   Textura * textura = new Textura("../recursos/imgs/window-icon.jpg");
   //Textura * textura = new Textura("../recursos/imgs/lata-coke.jpg");
   agregar( new Material(textura, 1, 0.5, 1, 70) );
 
   agregar(new CilindroT());
 
-  //agregar(MAT_Traslacion( 0.0,1.0, 0.0));
+  
    agregar(new TapaCilindro());
 
    ponerNombre("Cilindro con textura");
+   ponerIdentificador(identificador);
+}
+
+
+CirculoLatas::CirculoLatas(int n) 
+{
+
+agregar(MAT_Traslacion(n*2,0,0));
+   for (int i=0; i<n; i++){
+      const float angulo=i*2.0*M_PI/float(n);
+      agregar(MAT_Traslacion(n*cos(angulo),0,n*sin(angulo)));
+      CuboUgr * nodo= new CuboUgr();
+
+      nodo->ponerIdentificador(1000+i);
+      agregar(nodo);
+
+}
+
+
+
+//alejandro
+
+CuboUgr::CuboUgr(){
+   Textura * tex = new Textura("../recursos/imgs/window-icon.jpg");
+   agregar( new Material(tex, 0.2, 0.4, 0.4, 20) );
+   agregar(new Cubo24());
+   ponerNombre("Cubo 24 vertices");
+}
+
+Invocacion::Invocacion(int n){
+   ponerNombre("Invocacion");
+  
+
+   agregar(MAT_Traslacion(n*2,0,0));
+   for (int i=0; i<n; i++){
+      const float angulo=i*2.0*M_PI/float(n);
+      agregar(MAT_Traslacion(n*cos(angulo),0,n*sin(angulo)));
+      CuboUgr * nodo= new CuboUgr();
+
+      nodo->ponerIdentificador(1000+i);
+      agregar(nodo);
+   }
 }

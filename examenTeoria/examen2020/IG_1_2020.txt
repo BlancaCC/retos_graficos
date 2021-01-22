@@ -1,0 +1,216 @@
+Examen resuelto por J
+// EJERCICIO 1
+
+void dibujaElipse2D(int n, float a, float b, Tupla3f c, float theta) {
+    float angulo_circulo = 360.0/n;
+    float angulo_circulo_rad = M_PI/n;
+
+    std::vector<Tupla3f> vertices;
+    for ( int i = 0; i < n; i++ ) {
+        // vertices.push_back( MAT_Rotacion(angulo_circulo*i, 0.0, 0.0, 1.0)*Tupla3f({1.0, 0.0, 0.0}) );
+        vertices.push_back( { 0.0, cos(angulo_circulo_rad*i), sen(angulo_circulo_rad*i) } );
+    }
+
+    glDisable(GL_DEPTH_TEST);
+
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glVertexPointer(3, GL_FLOAT, 0, vertices.data());
+
+    glPushMatrix();
+    glLoadIdentity();
+    glTranslatef(c[X], c[Y], c[Z]);
+    glRotatef(theta, 1.0, 0.0, 0.0);
+    glScalef(1.0, b/2.0, a/2.0);
+
+    glColor3f(0.5, 0.5, 0.5);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    glDrawArrays(GL_POLYGON, 0, vertices.size());
+    glColor3f(0.3, 0.3, 0.3);
+    glLineWidth(2);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    glDrawArrays(GL_LINE_LOOP, 0, vertices.size());
+
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);  // restablecer
+
+    glPopMatrix();
+
+    glDisableClientState(GL_VERTEX_ARRAY);
+}
+
+
+// EJERCICIO 2
+
+void dibujaElipse2D(int n, float a, float b, Tupla3f c, float theta) {
+    float angulo_circulo = 360.0/n;
+    float angulo_circulo_rad = M_PI/n;
+
+    std::vector<Tupla3f> vertices;
+    for ( int i = 0; i < n; i++ ) {
+        // vertices.push_back( MAT_Rotacion(angulo_circulo*i, 0.0, 0.0, 1.0)*Tupla3f({1.0, 0.0, 0.0}) );
+        vertices.push_back( { 0.0, cos(angulo_circulo_rad*i), sen(angulo_circulo_rad*i) } );
+    }
+
+    unsigned long tam = sizeof(Tupla3f)*(unsigned long)vertices.size();
+
+    GLuint id_vao;
+    glGenVertexArrays(1, &id_vao);  // crear VAO
+    glBindVertexArray(id_vao);      // activar VAO
+
+    GLuint id_vbo;
+    glGenBuffers(1, &id_vbo);       // crear VBO
+    glBindBuffer(GL_ARRAY_BUFFER, id_vbo);  // activar VBO
+    glBufferData(GL_ARRAY_BUFFER, tam, vertice.data(), GL_STATIC_DRAW);
+        // RAM -> GPU
+    
+    glDisable(GL_DEPTH_TEST);
+    glVertexPointer(3, GL_FLOAT, 0, 0); // registrar tabla
+    glEnableClientState(GL_VERTEX_ARRAY);
+
+    glPushMatrix();
+    glLoadIdentity();
+    glTranslatef(c[X], c[Y], c[Z]);
+    glRotatef(theta, 1.0, 0.0, 0.0);
+    glScalef(1.0, b/2.0, a/2.0);
+
+    glColor3f(0.5, 0.5, 0.5);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    glDrawArrays(GL_POLYGON, 0, vertices.size());
+    glColor3f(0.3, 0.3, 0.3);
+    glLineWidth(2);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    glDrawArrays(GL_LINE_LOOP, 0, vertices.size());
+
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);  // restablecer
+
+    glPopMatrix();
+
+    glBindBuffer(GL_ARRAY_BUFFER, 0);   // no dejar activado VBO
+
+    glDisableClientState(GL_VERTEX_ARRAY);
+}
+
+
+// EJERCICIO 2 + reutilizar VAO
+std::map<int, GLuint> n_to_vao;
+
+void dibujaElipse2D(int n, float a, float b, Tupla3f c, float theta) {
+    float angulo_circulo = 360.0/n;
+    float angulo_circulo_rad = M_PI/n;
+
+    std::vector<Tupla3f> vertices;
+    for ( int i = 0; i < n; i++ ) {
+        // vertices.push_back( MAT_Rotacion(angulo_circulo*i, 0.0, 0.0, 1.0)*Tupla3f({1.0, 0.0, 0.0}) );
+        vertices.push_back( { 0.0, cos(angulo_circulo_rad*i), sen(angulo_circulo_rad*i) } );
+    }
+
+    unsigned long tam = sizeof(Tupla3f)*(unsigned long)vertices.size();
+    GLuint id_vao;
+    if ( n_to_vao.find(n) == n_to_vao.end() ) {
+        glGenVertexArrays(1, &id_vao);  // crear VAO
+        n_to_vao.insert({n, id_vao});
+    }
+    glBindVertexArray(n_to_vao[n]);     // activar VAO
+
+    GLuint id_vbo;
+    glGenBuffers(1, &id_vbo);       // crear VBO
+    glBindBuffer(GL_ARRAY_BUFFER, id_vbo);  // activar VBO
+    glBufferData(GL_ARRAY_BUFFER, tam, vertice.data(), GL_STATIC_DRAW);
+        // RAM -> GPU
+    
+    glDisable(GL_DEPTH_TEST);
+    glVertexPointer(3, GL_FLOAT, 0, 0); // registrar tabla
+    glEnableClientState(GL_VERTEX_ARRAY);
+
+    glPushMatrix();
+    glLoadIdentity();
+    glTranslatef(c[X], c[Y], c[Z]);
+    glRotatef(theta, 1.0, 0.0, 0.0);
+    glScalef(1.0, b/2.0, a/2.0);
+
+    glColor3f(0.5, 0.5, 0.5);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    glDrawArrays(GL_POLYGON, 0, vertices.size());
+    glColor3f(0.3, 0.3, 0.3);
+    glLineWidth(2);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    glDrawArrays(GL_LINE_LOOP, 0, vertices.size());
+
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);  // restablecer
+
+    glPopMatrix();
+
+    glBindBuffer(GL_ARRAY_BUFFER, 0);   // no dejar activado VBO
+
+    glDisableClientState(GL_VERTEX_ARRAY);
+}
+
+
+// EJERCICIO 3
+
+// derivada de MallaInd
+Toro::Toro(unsigned n_t, unsigned n_p, float r_p, float r_t) {
+    std::vector<Tupla3f> vertices_perfil;
+
+    float angulo = 360.0/n_p;
+    for ( unsigned i = 0; i < n_p; i++ ) {
+
+        vertices_perfil.push_back(
+            MAT_Rotacion( angulo*i, 0.0, 0.0, 1.0 )
+             * MAT_Traslacion( r_t, 0.0, 0.0 )
+             * Tupla3f({ r_p, 0.0, 0.0 })
+        );
+    }
+
+    // CREACIÓN DE LA TABLA DE VÉRTICES
+    int n = n_t, m = vertices_perfil.size();
+    for ( int i = 0; i <= n-1; i++ ) {
+        Matriz4f rot = MAT_Rotacion((360.0*i)/(n-1), 0.0, 1.0, 0.0);
+        for ( int j = 0; j <= m-1; j++ ) {
+            // q = vértice obtenido rotando perfil[j] 2*pi*i/(n-1)rad
+            Tupla3f q = rot*perfil[j];
+            /*if ( i != 0 )
+                nor_ver.push_back(rot*nor_ver[j]);*/
+            // añadir q al final de la tabla de vértices
+            vertices.push_back(q);
+            /*cc_tt_ver.push_back({
+                (float)i / (num_copias-1),
+                1.0-t[j]
+            });*/
+        }
+    }
+
+    // CREACIÓN DE LA TABLA DE TRIÁNGULOS
+    for ( int i = 0; i <= n-2; i++ ) {
+        for ( int j = 0; j <= m-2; j++ ) {
+            int k = i*m+j;
+            triangulos.push_back({k, k+m, k+m+1});
+            triangulos.push_back({k, k+m+1, k+1});
+        }
+    }
+}
+
+
+// EJERCICIO 5
+
+clase::compartenArista(unsigned t0, unsigned t1) {
+    std::vector<Tupla2i> aristas_t0, aristas_t1;
+
+    aristas_t0.push_back( {t0[0], t0[1]} );
+    aristas_t0.push_back( {t0[1], t0[2]} );
+    aristas_t0.push_back( {t0[2], t0[0]} );
+    aristas_t1.push_back( {t1[0], t1[1]} );
+    aristas_t1.push_back( {t1[1], t1[2]} );
+    aristas_t1.push_back( {t1[2], t1[0]} );
+
+    for ( auto arista_t0 : aristas_t0 ) {
+        for ( auto arista_t1 : aristas_t1 ) {
+            if (
+                ( arista_t0[X] == arista_t1[X] && arista_t0[Y] == arista_t1[Y] )
+                 ||
+                ( arista_t0[X] == arista_t1[Y] && arista_t0[Y] == arista_t1[X] )
+            ) return true;
+        }
+    }
+
+    return false;
+}

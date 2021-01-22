@@ -143,9 +143,30 @@ class TapaCilindro : public MallaInd
 class CilindroTextura : public NodoGrafoEscena
 {
   public:
-    CilindroTextura();
+    //CilindroTextura();
+    CilindroTextura( int identificador);
 };
 
 
+class CirculoLatas: public NodoGrafoEscena
+{
+  public:
+    
+    CirculoLatas( int n);
+};
+
+
+
+class CuboUgr : public NodoGrafoEscena{
+
+   public:
+      CuboUgr();
+};
+
+class Invocacion : public NodoGrafoEscena{
+
+   public:
+      Invocacion(int n);
+};
 
 #endif
